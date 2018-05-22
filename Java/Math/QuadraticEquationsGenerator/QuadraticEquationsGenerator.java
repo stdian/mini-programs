@@ -1,4 +1,3 @@
-
 import java.util.Random;
 
 public class QuadraticEquationsGenerator {
@@ -10,22 +9,29 @@ public class QuadraticEquationsGenerator {
 		String final_str = "";
 		int a, b, c, d, x1, x2;
 
-		a = random.nextInt(20) - 10;
-		b = random.nextInt(20) - 10;
-		c = random.nextInt(20) - 10;
+		a = random.nextInt(20) - 5;
+		b = random.nextInt(20) - 5;
+		c = random.nextInt(20) - 15;
 		while (a == 0 || b == 0 || c == 0) {
-			a = random.nextInt(20) - 10;
-			b = random.nextInt(20) - 10;
-			c = random.nextInt(20) - 10;
+			a = random.nextInt(20) - 5;
+			b = random.nextInt(20) - 5;
+			c = random.nextInt(20) - 15;
 		}
 
-		final_str = final_str + a + "x^2 ";
+		if (a == 1) {
+			final_str = final_str + "x^2 ";
+		} else {
+			final_str = final_str + a + "x^2 ";
+		}
 		if (b < 0) {
 			b = b * -1;
 			final_str = final_str + "- " + b + "x ";
 			b = b * -1;
+		}
+		else if(b == 1) {
+			final_str = final_str + "+ x ";
 		} else {
-			final_str = final_str + "+ " + b + "x";
+			final_str = final_str + "+ " + b + "x ";
 		}
 
 		if (c < 0) {
