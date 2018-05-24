@@ -1,22 +1,45 @@
+
 import java.util.Random;
+import java.util.Scanner;
 
 public class QuadraticEquationsGenerator {
 
+	static Random random = new Random();
+
 	public static void main(String[] args) {
 
-		Random random = new Random();
+		Scanner sc = new Scanner(System.in);
+		String final_str;
+		int a, b, c;
+
+		int answer = 10;
+
+		while (true) {
+			int[] eq = generate();
+			a = eq[0];
+			b = eq[1];
+			c = eq[2];
+
+			final_str = generate_str(a, b, c);
+
+
+			System.out.println("Your Equation: " + final_str);
+			System.out.println("1. Solve\n2. Generate new");
+			int inp = sc.nextInt();
+			if (inp == 1) {
+				break;
+			}
+
+		}
+
+		System.out.println(final_str);
+		solve(a, b, c);
+
+	}
+
+	public static String generate_str(int a, int b, int c) {
 
 		String final_str = "";
-		int a, b, c, d, x1, x2;
-
-		a = random.nextInt(20) - 5;
-		b = random.nextInt(20) - 5;
-		c = random.nextInt(20) - 15;
-		while (a == 0 || b == 0 || c == 0) {
-			a = random.nextInt(20) - 5;
-			b = random.nextInt(20) - 5;
-			c = random.nextInt(20) - 15;
-		}
 
 		if (a == 1) {
 			final_str = final_str + "x^2 ";
@@ -42,13 +65,23 @@ public class QuadraticEquationsGenerator {
 			final_str = final_str + "+ " + c + " = 0";
 		}
 
-		System.out.println(final_str);
-		solve(a, b, c);
-
-
-
+		return final_str;
 	}
 
+	public static int[] generate() {
+		int a, b, c;
+
+		a = random.nextInt(20) - 5;
+		b = random.nextInt(20) - 5;
+		c = random.nextInt(20) - 15;
+		while (a == 0 || b == 0 || c == 0) {
+			a = random.nextInt(20) - 5;
+			b = random.nextInt(20) - 5;
+			c = random.nextInt(20) - 15;
+		}
+
+		return new int[]{a, b, c};
+	}
 
 	public static void solve(int a, int b, int c) {
 		double x1 = 0, x2 = 0;
@@ -72,3 +105,4 @@ public class QuadraticEquationsGenerator {
 	}
 
 }
+
